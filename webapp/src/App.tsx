@@ -7,6 +7,6 @@ export const App = () => {
   return (
     <TrpcProvider>
       <AllIdeasPage />
-    </TrpcProvider>  
+    </TrpcProvider>
   )
 }
