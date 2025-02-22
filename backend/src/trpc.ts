@@ -8,12 +8,6 @@ const ideas = [
   { nick: 'cool-idea-nick-5', name: 'Idea 5', description: 'Description of idea 5...' },
 ]
 
-// const x: number = '1'
-
-// const x:number = 'hello'
-
-// if (true) console.log(123)
-
 const trpc = initTRPC.create()
 
 export const trpcRouter = trpc.router({
