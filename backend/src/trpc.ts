@@ -10,6 +10,10 @@ const ideas = [
 
 // const x: number = '1'
 
+// const x:number = 'hello'
+
+// if (true) console.log(123)
+
 const trpc = initTRPC.create()
 
 export const trpcRouter = trpc.router({
