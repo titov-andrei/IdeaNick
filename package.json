@@ -1,16 +1,16 @@
 {
-  "name": "idea-nick",
+  "name": "ideanick",
   "private": true,
   "type": "module",
   "version": "0.0.0",
   "scripts": {
-    "b": "pnpm --filter @IdeaNick/backend",
-    "w": "pnpm --filter @IdeaNick/webapp",
+    "b": "pnpm --filter @ideanick/backend",
+    "w": "pnpm --filter @ideanick/webapp",
     "dev": "pnpm -r --parallel dev",
     "types": "concurrently \"pnpm b types\" \"pnpm w types\"",
     "lint": "concurrently \"pnpm b lint\" \"pnpm w lint\"",
     "prettify": "pnpm  -r --parallel prettify",
-    "prepare": "husky init"
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
