@@ -30,13 +30,5 @@
     "globals": "^15.14.0",
     "prettier": "^3.5.1",
     "vite": "^6.1.0"
-  },
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "esbuild"
-    ],
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
   }
 }
