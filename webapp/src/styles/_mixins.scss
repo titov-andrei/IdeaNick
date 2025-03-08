@@ -1,9 +1,10 @@
-@use './_vars.scss' as *;
-@use '../../node_modules/include-media/dist/_include-media.scss' as *;
+@use './vars.scss' as *;
+@use '../../node_modules/include-media/dist/include-media.scss' as *;
 
 @mixin link($color: $blue, $hoverColor: $red) {
   color: $color;
   transition: color 200ms ease;
+
   &:hover,
   &:active {
     color: $hoverColor;
