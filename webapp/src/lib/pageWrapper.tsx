@@ -1,7 +1,11 @@
+/* eslint-disable react/display-name */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { type UseTRPCQueryResult, type UseTRPCQuerySuccessResult } from '@trpc/react-query/shared'
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ErrorPageComponent } from '../components/ErrorPageComponent'
+import { NotFoundPage } from '../pages/NotFoundPage'
 import { useAppContext, type AppContext } from './ctx'
 import { getAllIdeasRoute } from './routes'
 
@@ -20,9 +24,7 @@ const checkAccessFn = <T,>(value: T, message?: string): void => {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Props = Record<string, any>
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type QueryResult = UseTRPCQueryResult<any, any>
 type QuerySuccessResult<TQueryResult extends QueryResult> = UseTRPCQuerySuccessResult<
   NonNullable<TQueryResult['data']>,
@@ -56,7 +58,6 @@ type PageWrapperProps<TProps extends Props, TQueryResult extends QueryResult | u
   Page: React.FC<TProps>
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult | undefined = undefined>({
   authorizedOnly,
   authorizedOnlyTitle = 'Please, Authorize',
@@ -66,8 +67,8 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
   checkAccessTitle = 'Access Denied',
   checkAccessMessage = 'You have no access to this page',
   checkExists,
-  checkExistsTitle = 'Not Found',
-  checkExistsMessage = 'This page does not exist',
+  checkExistsTitle,
+  checkExistsMessage,
   useQuery,
   setProps,
   Page,
@@ -108,7 +109,7 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
   if (checkExists) {
     const notExists = !checkExists(helperProps)
     if (notExists) {
-      return <ErrorPageComponent title={checkExistsTitle} message={checkExistsMessage} />
+      return <NotFoundPage title={checkExistsTitle} message={checkExistsMessage} />
     }
   }
 
@@ -117,7 +118,7 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
     return <Page {...props} />
   } catch (error) {
     if (error instanceof CheckExistsError) {
-      return <ErrorPageComponent title={checkExistsTitle} message={error.message || checkExistsMessage} />
+      return <NotFoundPage title={checkExistsTitle} message={error.message || checkExistsMessage} />
     }
     if (error instanceof CheckAccessError) {
       return <ErrorPageComponent title={checkAccessTitle} message={error.message || checkAccessMessage} />
@@ -126,12 +127,10 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export const withPageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult | undefined = undefined>(
   pageWrapperProps: Omit<PageWrapperProps<TProps, TQueryResult>, 'Page'>
 ) => {
   return (Page: PageWrapperProps<TProps, TQueryResult>['Page']) => {
-    // eslint-disable-next-line react/display-name
     return () => <PageWrapper {...pageWrapperProps} Page={Page} />
   }
 }
