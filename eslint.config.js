@@ -18,7 +18,9 @@ export default [
   {
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      react: eslintReact,
+      // react: {
+      //   version: "detect",
+      // },
       // 'react-hooks': eslintReactHooks,
       // 'react-refresh': eslintReactRefresh,
       prettier: prettierPlugin,

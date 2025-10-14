@@ -19,8 +19,8 @@
     "inlineSources": true,
     "isolatedModules": false,
     "lib": ["ES2021"],
-    "module": "commonjs",
-    "moduleResolution": "Node",
+    "module": "es2015",
+    "moduleResolution": "bundler",
     "target": "ES2021"
   },
   "include": ["src"]

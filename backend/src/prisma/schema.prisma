@@ -8,11 +8,12 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  nick      String   @unique
+  id   String @id @default(uuid())
+  nick String @unique
+  name String @default("")
   password  String
   createdAt DateTime @default(now())
-  ideas      Idea[]
+  ideas     Idea[]
 }
 
 model Idea {
