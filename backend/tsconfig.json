@@ -19,7 +19,7 @@
     "inlineSources": true,
     "isolatedModules": false,
     "lib": ["ES2021"],
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "bundler",
     "target": "ES2021"
   },
