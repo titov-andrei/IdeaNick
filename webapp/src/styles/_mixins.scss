@@ -1,9 +1,15 @@
 @use './vars.scss' as *;
 @forward '../../node_modules/include-media/dist/include-media';
+@use 'sass:math';
 
 @mixin link($color: $blue, $hoverColor: $red) {
   color: $color;
   transition: color 200ms ease;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
 
   &:hover,
   &:active {
